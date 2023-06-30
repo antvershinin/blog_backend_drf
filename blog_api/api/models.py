@@ -8,9 +8,15 @@ class Post(models.Model):
     text = models.TextField()
     author = models.ForeignKey(
         'auth.User', on_delete=models.CASCADE)
-
+    def __str__(self):
+        return self.title
+    
 
 class Comments(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     text = models.TextField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Comment on post #{self.post.id}'
+
