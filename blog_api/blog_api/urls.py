@@ -16,17 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api.views import *
+
+from api.views import UserDetail, UserList
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.authtoken')),
-    path('api/posts/', PostAPIList.as_view()),
-    path('api/posts/add/', PostAddAPIView.as_view()),
-    path('api/postdelete/<int:pk>/', PostDeleteAPIView.as_view(),),
-    path('api/posts/<int:pk>/', PostDetailAPIView.as_view()),
-    path('api/posts/<int:post_pk>/addcomment/>',
-         CommentAddAPIView.as_view()),
+    path('api-auth/', include('rest_framework.urls')),
+    path('users/', UserList.as_view()),
+    path('users/<int:pk>/', UserDetail.as_view()),
+    path('api/', include('api.urls')),
 
 ]
