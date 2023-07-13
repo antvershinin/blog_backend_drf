@@ -39,13 +39,5 @@ class CommentAddSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class UserSerializer(serializers.ModelSerializer):
-    posts = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=Post.objects.all())
-    comments = serializers.PrimaryKeyRelatedField(
-        many=True, queryset=Comments.objects.all())
 
-    class Meta:
-        model = User
-        fields = ['id', 'username', 'posts', 'comments']
 

@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 
@@ -7,7 +8,7 @@ class Post(models.Model):
     title = models.CharField()
     text = models.TextField()
     author = models.ForeignKey(
-        'auth.User', related_name='posts', on_delete=models.CASCADE)
+        settings.AUTH_USER_MODEL, related_name='posts', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -15,7 +16,7 @@ class Post(models.Model):
 
 class Comments(models.Model):
     author = models.ForeignKey(
-        'auth.User', related_name='comments', on_delete=models.CASCADE)
+        settings.AUTH_USER_MODEL, related_name='comments', on_delete=models.CASCADE)
     text = models.TextField()
     post = models.ForeignKey(
         Post, related_name='comments', on_delete=models.CASCADE)
