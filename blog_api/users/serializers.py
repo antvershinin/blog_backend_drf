@@ -1,7 +1,8 @@
+from django.conf import settings
+from rest_framework_simplejwt.views import TokenViewBase
+from .models import CustomUser, Profile
 from django.contrib.auth import authenticate
 from rest_framework import serializers
-
-from .models import CustomUser, Profile
 
 
 class CustomUserSerializer(serializers.ModelSerializer):

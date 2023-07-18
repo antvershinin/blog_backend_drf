@@ -1,8 +1,6 @@
 from rest_framework import serializers
 from .models import *
 from django.contrib.auth.models import User
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -37,7 +35,3 @@ class CommentAddSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
         fields = '__all__'
-
-
-
-
